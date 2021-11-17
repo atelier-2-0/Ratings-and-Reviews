@@ -5,72 +5,45 @@ const mongoose = require('mongoose');
 const reviewsSchema = new mongoose.Schema({
   product_id: { type: Number, required: true },
   review_id: { type: Number, required: true },
-  data: { type: Date, default: Date.now, required: true },
+  date: { type: Date, default: Date.now, required: true },
   rating: { type: Number, required: true },
   summary: { type: String, maxLength: 60, required: true },
   body: { type: String, maxLength: 1000, required: true },
   recommend: { type: Boolean, required: true },
-  helpfulness: { type: Number, required: false },
-  response: { type: String, default: null, required: false },
+  helpfulness: { type: Number },
+  response: { type: String, default: null},
   reviewer_name: { type: String, required: true },
   reviewer_email: { type: String, required: true },
   photos: [{
-    photo_id: { type: Number, required: false },
-    url: { type: String, required: false }
+    photo_id: { type: Number }, url: { type: String }
   }],
   characteristics: {
-    fit: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    size: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    width: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    length: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    comfort: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    quality: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
+    fit: { id: { type: Number }, value: { type: Number } },
+    size: { id: { type: Number }, value: { type: Number } },
+    width: { id: { type: Number }, value: { type: Number } },
+    length: { id: { type: Number }, value: { type: Number } },
+    comfort: { id: { type: Number }, value: { type: Number } },
+    quality: { id: { type: Number }, value: { type: Number } },
   },
 });
 
 const metadataSchema = new mongoose.Schema({
-  recommended: {
-    true: { type: Number, required: false },
-    false: { type: Number, required: false }
-  },
+  product_id: { type: Number, required: true },
+  recommended: { true: { type: Number }, false: { type: Number } },
   characteristics: {
-    size: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    width: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
-    comfort: {
-      id: { type: Number, required: false },
-      value: { type: Number, required: false },
-    },
+    fit: { id: { type: Number }, value: { type: Number } },
+    size: { id: { type: Number }, value: { type: Number } },
+    width: { id: { type: Number }, value: { type: Number } },
+    length: { id: { type: Number }, value: { type: Number } },
+    comfort: { id: { type: Number }, value: { type: Number } },
+    quality: { id: { type: Number }, value: { type: Number } },
   },
   ratings: {
-    1: { type: Number, required: false },
-    2: { type: Number, required: false },
-    3: { type: Number, required: false },
-    4: { type: Number, required: false },
-    5: { type: Number, required: false },
+    1: { type: Number },
+    2: { type: Number },
+    3: { type: Number },
+    4: { type: Number },
+    5: { type: Number },
   }
 });
 
