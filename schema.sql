@@ -39,7 +39,8 @@ CREATE TABLE `Results` (
   `response` MEDIUMTEXT NULL DEFAULT NULL,
   `reviewer_name` CHAR(30) NOT NULL,
   `reviewer_email` CHAR(50) NOT NULL,
-  PRIMARY KEY (`results_id`)
+  PRIMARY KEY (`results_id`),
+  CONSTRAINT review_id_unique UNIQUE (review_id)
 );
 
 -- ---
@@ -58,18 +59,18 @@ CREATE TABLE `Photos` (
 );
 
 -- ---
--- Table 'Metatdata'
+-- Table 'Metadata'
 --
 -- ---
 
-DROP TABLE IF EXISTS `Metatdata`;
+DROP TABLE IF EXISTS `Metadata`;
 
-CREATE TABLE `Metatdata` (
+CREATE TABLE `Metadata` (
   `product_id_Reviews` MEDIUMINT NOT NULL DEFAULT NULL,
   `characteristics_id_Characteristics` MEDIUMINT NOT NULL,
   `recommended_id_Recommended` MEDIUMINT NULL,
   `ratings_id_Ratings` MEDIUMINT NOT NULL,
-  PRIMARY KEY ()
+  PRIMARY KEY (`product_id_Reviews`)
 );
 
 -- ---
@@ -128,10 +129,10 @@ CREATE TABLE `Characteristics` (
 ALTER TABLE `Reviews` ADD FOREIGN KEY (results_id_Results) REFERENCES `Results` (`results_id`);
 ALTER TABLE `Results` ADD FOREIGN KEY (product_id_Reviews) REFERENCES `Reviews` (`product_id`);
 ALTER TABLE `Results` ADD FOREIGN KEY (photos_id_Photos) REFERENCES `Photos` (`photos_id`);
-ALTER TABLE `Metatdata` ADD FOREIGN KEY (product_id_Reviews) REFERENCES `Reviews` (`product_id`);
-ALTER TABLE `Metatdata` ADD FOREIGN KEY (characteristics_id_Characteristics) REFERENCES `Characteristics` (`characteristics_id`);
-ALTER TABLE `Metatdata` ADD FOREIGN KEY (recommended_id_Recommended) REFERENCES `Recommended` (`recommended_id`);
-ALTER TABLE `Metatdata` ADD FOREIGN KEY (ratings_id_Ratings) REFERENCES `Ratings` (`ratings_id`);
+ALTER TABLE `Metadata` ADD FOREIGN KEY (product_id_Reviews) REFERENCES `Reviews` (`product_id`);
+ALTER TABLE `Metadata` ADD FOREIGN KEY (characteristics_id_Characteristics) REFERENCES `Characteristics` (`characteristics_id`);
+ALTER TABLE `Metadata` ADD FOREIGN KEY (recommended_id_Recommended) REFERENCES `Recommended` (`recommended_id`);
+ALTER TABLE `Metadata` ADD FOREIGN KEY (ratings_id_Ratings) REFERENCES `Ratings` (`ratings_id`);
 
 -- ---
 -- Table Properties
@@ -140,7 +141,7 @@ ALTER TABLE `Metatdata` ADD FOREIGN KEY (ratings_id_Ratings) REFERENCES `Ratings
 -- ALTER TABLE `Reviews` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Results` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Photos` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Metatdata` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `Metadata` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Ratings` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Recommended` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Characteristics` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -155,7 +156,7 @@ ALTER TABLE `Metatdata` ADD FOREIGN KEY (ratings_id_Ratings) REFERENCES `Ratings
 -- ('','','','','','','','','','','','','');
 -- INSERT INTO `Photos` (`photos_id`,`review_id_Results`,`id`,`url`) VALUES
 -- ('','','','');
--- INSERT INTO `Metatdata` (`product_id_Reviews`,`characteristics_id_Characteristics`,`recommended_id_Recommended`,`ratings_id_Ratings`) VALUES
+-- INSERT INTO `Metadata` (`product_id_Reviews`,`characteristics_id_Characteristics`,`recommended_id_Recommended`,`ratings_id_Ratings`) VALUES
 -- ('','','','');
 -- INSERT INTO `Ratings` (`ratings_id`,`1`,`2`,`3`,`4`,`5`) VALUES
 -- ('','','','','','');
