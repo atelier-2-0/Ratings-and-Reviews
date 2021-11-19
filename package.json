@@ -4,7 +4,7 @@
   "description": "Atelier 2.0 is a redesign project for building the servers and databases that support the Loungeo fashion e-commerce web application. ## Description",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node ./server/index.js",
+    "dev": "nodemon --exec babel-node ./server/index.js",
     "clean": "rm -rf dist",
     "build": "npm run clean && babel ./server --out-dir dist --source-maps",
     "prod": "node ./dist/index.js",
