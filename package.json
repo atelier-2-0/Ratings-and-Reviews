@@ -2,11 +2,13 @@
   "name": "ratings-and-reviews",
   "version": "1.0.0",
   "description": "Atelier 2.0 is a redesign project for building the servers and databases that support the Loungeo fashion e-commerce web application. ## Description",
-  "main": "nosql-schema.js",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "build": "babel index.js -d dist",
-    "start": "npm run build && node dist/index.js"
+    "dev": "babel-node ./server/index.js",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && babel ./server --out-dir dist --source-maps",
+    "prod": "node ./dist/index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,13 +23,15 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "babel-jest": "^27.3.1",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^25.2.4",
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "express": "^4.17.1"

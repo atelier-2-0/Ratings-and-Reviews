@@ -16,7 +16,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "ignorePatterns": [],
+    "ignorePatterns": ["dist"],
     "rules": {
       "no-console": "off",
       "no-unused-vars":"warn",
