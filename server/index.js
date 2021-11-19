@@ -1,9 +1,13 @@
-import app from './index.js';
+import database from './database.js';
+import makeApp from './app.js';
+import { jest } from '@jest/globals';
 
-const app = express();
+const createUser = jest.fn();
+const getUser = jest.fn();
 
-app.get('/test', (req, res) => {
-  res.send('im working');
+const app = makeApp({
+  createUser,
+  getUser,
 });
 
 app.listen(8080, () => console.log('listening on port 3000'));

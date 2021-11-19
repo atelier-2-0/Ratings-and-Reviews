@@ -1,10 +1,21 @@
 import express from 'express';
 
-const app = express();
+export default const makeApp = function(database) {
+  const app = express();
 
-app.post('/users', (req, res) => {
-  // easiest way to make an express app send back json content type is sending an empty {} because it will automatically convert it to json
-  res.send({}).sendStatus(200);
-});
+  app.use(express.json());
 
-export default app;
+  app.get('/reviews', (req, res) => {
+    // easiest way to make an express app send back json content type is sending an empty {} because it will automatically convert it to json
+    const {password, username} = req.body;
+    if (!password || !username) {
+      res.sendStatus(400);
+      return;
+    }
+
+    database.createUser();
+
+    res.send({userId: 0});
+  });
+  return app;
+}

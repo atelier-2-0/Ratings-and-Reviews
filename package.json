@@ -1,5 +1,25 @@
 {
+  "name": "ratings-and-reviews",
+  "version": "1.0.0",
+  "description": "ratings and reviews microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atelier-2-0/Ratings-and-Reviews.git"
+  },
+  "author": "Olivia Schwerdtfeger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atelier-2-0/Ratings-and-Reviews/issues"
+  },
+  "homepage": "https://github.com/atelier-2-0/Ratings-and-Reviews#readme",
   "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
     "express": "^4.17.1",
     "jest": "^27.3.1",
     "supertest": "^6.1.6"
