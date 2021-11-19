@@ -1,24 +1,40 @@
 {
   "name": "ratings-and-reviews",
   "version": "1.0.0",
-  "description": "ratings and reviews microservice",
+  "description": "Atelier 2.0 is a redesign project for building the servers and databases that support the Loungeo fashion e-commerce web application. ## Description",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "start": "nodemon ./server/index.js --exec babel-node --presets @babel/preset-env",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && babel ./server --out-dir dist --source-maps",
+    "prod": "node ./dist/index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atelier-2-0/Ratings-and-Reviews.git"
   },
-  "author": "Olivia Schwerdtfeger",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/atelier-2-0/Ratings-and-Reviews/issues"
   },
   "homepage": "https://github.com/atelier-2-0/Ratings-and-Reviews#readme",
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-jest": "^27.3.1",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3"
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.2.4",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
