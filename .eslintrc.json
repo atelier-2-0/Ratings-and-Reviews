@@ -10,6 +10,12 @@
     },
     "ignorePatterns": ["babel.config.js"],
     "rules": {
-      "no-console":"off"
+      "no-console": "off",
+      "no-unused-vars":"warn",
+      "max-len": [
+        "error", {"code": 80},
+        {"ignoreComments": true}
+      ],
+      "arrow-body-style": ["error", "as-needed"]
     }
 }
