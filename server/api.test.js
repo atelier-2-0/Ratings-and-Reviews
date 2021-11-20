@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from './app';
+import app from './api.js';
 
 describe('GET endpoint "/"', () => {
   it('should respond with a 200 status code', async () => {
