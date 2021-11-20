@@ -1,0 +1,47 @@
+atelier2=# \dt
+                   List of relations
+ Schema |          Name           | Type  |    Owner    
+--------+-------------------------+-------+-------------
+ public | characteristics         | table | olivia-home
+ public | characteristics_reviews | table | olivia-home
+ public | photos                  | table | olivia-home
+ public | reviews                 | table | olivia-home
+(4 rows)
+
+atelier2=# SELECT COUNT(*) FROM reviews;
+  count  
+---------
+ 5774952
+(1 row)
+
+atelier2=# SELECT COUNT(*) FROM reviews;
+  count  
+---------
+ 5774952
+(1 row)
+
+atelier2=# SELECT COUNT(*) FROM characteristics;
+  count  
+---------
+ 3347679
+(1 row)
+
+atelier2=# SELECT COUNT(*) FROM characteristics_reviews;
+  count   
+----------
+ 19327575
+(1 row)
+
+atelier2=# SELECT COUNT(*) FROM photos;
+  count  
+---------
+ 2742540
+(1 row)
+------------------------------------------------------
+
+(Below are the commands used in /database/schema.sql to copy the csv data into my database, atelier2)
+
+-- COPY reviews FROM '/Users/olivia-home/hackreactor/immersive/SDC/csv/reviews.csv' WITH (FORMAT csv, HEADER TRUE);
+-- COPY characteristics FROM '/Users/olivia-home/hackreactor/immersive/SDC/csv/characteristics.csv' WITH (FORMAT csv, HEADER TRUE);
+-- COPY characteristics_reviews FROM '/Users/olivia-home/hackreactor/immersive/SDC/csv/characteristic_reviews.csv' WITH (FORMAT csv, HEADER TRUE);
+-- COPY photos FROM '/Users/olivia-home/hackreactor/immersive/SDC/csv/reviews_photos.csv' WITH (FORMAT csv, HEADER TRUE);
