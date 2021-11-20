@@ -1,5 +1,6 @@
 # General
 .DS_Code
+database/db.js
 
 # Logs
 logs
