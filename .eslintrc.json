@@ -33,8 +33,6 @@
       "import/no-extraneous-dependencies": [
         "error", {"devDependencies": true}
       ],
-      "import/extensions": [
-       "off"
-    ]
+      "import/extensions": ["off"]
     }
 }
