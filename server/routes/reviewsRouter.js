@@ -1,7 +1,6 @@
 import express from 'express';
 import {
   getReviews,
-  getMetadata,
   postReview,
   markAsHelpful,
   reportReview,
@@ -12,7 +11,6 @@ const reviewsRouter = express.Router();
 /* GET requests: List Reviews and Get Review Metadata */
 
 reviewsRouter.get('/', getReviews);
-reviewsRouter.get('/meta', getMetadata);
 
 /* POST request: Add a Review */
 

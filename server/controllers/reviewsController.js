@@ -1,6 +1,5 @@
 import {
   listReviews,
-  retrieveMetadata,
   addReview,
   updateHelpfulness,
   markAsReported,
@@ -13,15 +12,6 @@ export const getReviews = (req, res) => {
       console.log('error getting reviews...', err);
     }
     res.status(200).send(results);
-  });
-};
-
-export const getMetadata = (req, res) => {
-  retrieveMetadata(req.params, (err, results) => {
-    if (err) {
-      console.log('error getting metadata...', err);
-    }
-    res.status(201).send(results);
   });
 };
 
