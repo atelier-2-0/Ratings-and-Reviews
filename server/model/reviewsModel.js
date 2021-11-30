@@ -31,16 +31,15 @@ export const addReview = (data, callback) => {
   } = data;
   const date = new Date();
 
-  const insertIntoReviews = 'INSERT INTO reviews(product_id, rating, summary, body, recommend, reviewer_name, reviewer_email, date, reported, helpfulness) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);';
-  const insertIntoCharacteristics = 'INSERT INTO reviews(product_id, rating, summary, body, recommend, name, email) values($1, $2, $3, $4, $5, $6, $7, $8);';
+  const insertIntoReviews = 'INSERT INTO reviews(product_id, rating, summary, body, recommend, reviewer_name, reviewer_email, date, reported, helpfulness) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING review_id;';
+  const insertIntoCharacteristics = 'INSERT INTO characteristics(product_id, rating, summary, body, recommend, name, email) values($1, $2, $3, $4, $5, $6, $7, $8);';
   const insertIntoPhotos = 'INSERT INTO photos(review_id, url) values($1, $2);';
 
   pool.query(insertIntoReviews, [product_id, rating, summary, body, recommend, name, email, date.valueOf(), false, 0], (error, results) => {
     if (error) {
       callback(error, null);
     } else {
-      console.log('results', results);
-      // pool.query(insertIntoPhotos, [])
+      callback(null, `Created ${results.rows[0].review_id}`);
     }
   });
 };
