@@ -20,7 +20,7 @@ export const postReview = (req, res) => {
     if (err) {
       console.log('error posting review...', err);
     }
-    res.send(results);
+    res.status(201).send(results);
   });
 };
 
