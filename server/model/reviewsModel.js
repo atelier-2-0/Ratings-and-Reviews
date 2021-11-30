@@ -41,6 +41,7 @@ export const listReviews = (reqQuery, callback) => {
 
 export const retrieveMetadata = async (reqQuery, callback) => {
   const { product_id } = reqQuery;
+  console.log('reqQuery', reqQuery);
 
   // const query = 'SELECT * FROM reviews WHERE product_id = $1;';
 
@@ -100,8 +101,7 @@ export const retrieveMetadata = async (reqQuery, callback) => {
     return allRatings;
   };
 
-  const resolvedQueries = await executeAllQueries();
-  resolvedQueries
+  executeAllQueries()
     .then((results) => {
       console.log('results', results);
       const meta = {

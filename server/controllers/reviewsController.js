@@ -17,7 +17,7 @@ export const getReviews = (req, res) => {
 };
 
 export const getMetadata = (req, res) => {
-  retrieveMetadata(req.query, (err, results) => {
+  retrieveMetadata(req.params, (err, results) => {
     if (err) {
       console.log('error getting metadata...', err);
     }
