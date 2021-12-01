@@ -1,10 +1,10 @@
 import express from 'express';
+import reviewsRouter from '../routes/reviewsRouter.js';
 
 const app = express();
+
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Successful get request!');
-});
+app.use('/reviews', reviewsRouter);
 
 export default app;
