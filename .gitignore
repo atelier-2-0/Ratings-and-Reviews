@@ -1,6 +1,8 @@
 # General
 .DS_Code
+.DS_Store
 database/db.js
+k6-test-summaries.js
 
 # Logs
 logs
