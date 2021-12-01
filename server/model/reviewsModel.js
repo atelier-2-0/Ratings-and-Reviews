@@ -6,9 +6,9 @@ export const listReviews = (reqQuery, callback) => {
     page = 1, count = 5, sort, product_id,
   } = reqQuery;
 
-  const query = 'SELECT review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness FROM reviews WHERE product_id = $1 LIMIT $2;';
+  const retrieveAllReviews = 'SELECT review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness FROM reviews WHERE product_id = $1 LIMIT $2;';
 
-  pool.query(query, [product_id, count], (error, results) => {
+  pool.query(retrieveAllReviews, [product_id, count], (error, results) => {
     if (error) {
       callback(error, null);
     } else {
@@ -47,9 +47,9 @@ export const addReview = (data, callback) => {
 export const updateHelpfulness = (reqQuery, callback) => {
   const { review_id } = reqQuery;
 
-  const query = 'UPDATE reviews SET helpfulness = helpfulness + 1 WHERE id = $1';
+  const markReviewAsHelpful = 'UPDATE reviews SET helpfulness = helpfulness + 1 WHERE id = $1';
 
-  pool.query(query, [review_id], (error) => {
+  pool.query(markReviewAsHelpful, [review_id], (error) => {
     if (error) {
       callback(error, null);
     } else {
@@ -61,9 +61,9 @@ export const updateHelpfulness = (reqQuery, callback) => {
 export const markAsReported = (reqQuery, callback) => {
   const { review_id } = reqQuery;
 
-  const query = 'UPDATE reviews SET reported = true WHERE id = $1';
+  const reportReview = 'UPDATE reviews SET reported = true WHERE id = $1';
 
-  pool.query(query, [review_id], (error) => {
+  pool.query(reportReview, [review_id], (error) => {
     if (error) {
       callback(error, null);
     } else {
