@@ -1,0 +1,74 @@
+~ Very first test case with example from k6
+
+  olivias-imac:Ratings-and-Reviews olivia-home$ k6 run --vus 1 '/Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/script.js'
+            /\      |‾‾| /‾‾/   /‾‾/
+      /\  /  \     |  |/  /   /  /
+      /  \/    \    |     (   /   ‾‾\
+    /          \   |  |\  \ |  (‾)  |
+    / __________ \  |__| \__\ \_____/ .io
+
+    execution: local
+      script: /Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/script.js
+      output: -
+
+    scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+            * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+
+  running (00m01.7s), 0/1 VUs, 1 complete and 0 interrupted iterations
+  default ✓ [======================================] 1 VUs  00m01.7s/10m0s  1/1 iters, 1 per VU
+
+      data_received..................: 1.4 kB 809 B/s
+      data_sent......................: 104 B  62 B/s
+      http_req_blocked...............: avg=747µs    min=747µs    med=747µs    max=747µs    p(90)=747µs    p(95)=747µs
+      http_req_connecting............: avg=138µs    min=138µs    med=138µs    max=138µs    p(90)=138µs    p(95)=138µs
+      http_req_duration..............: avg=673.42ms min=673.42ms med=673.42ms max=673.42ms p(90)=673.42ms p(95)=673.42ms
+        { expected_response:true }...: avg=673.42ms min=673.42ms med=673.42ms max=673.42ms p(90)=673.42ms p(95)=673.42ms
+      http_req_failed................: 0.00%  ✓ 0        ✗ 1
+      http_req_receiving.............: avg=65µs     min=65µs     med=65µs     max=65µs     p(90)=65µs     p(95)=65µs
+      http_req_sending...............: avg=53µs     min=53µs     med=53µs     max=53µs     p(90)=53µs     p(95)=53µs
+      http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+      http_req_waiting...............: avg=673.3ms  min=673.3ms  med=673.3ms  max=673.3ms  p(90)=673.3ms  p(95)=673.3ms
+      http_reqs......................: 1      0.595824/s
+      iteration_duration.............: avg=1.67s    min=1.67s    med=1.67s    max=1.67s    p(90)=1.67s    p(95)=1.67s
+      iterations.....................: 1      0.595824/s
+      vus............................: 1      min=1      max=1
+      vus_max........................: 1      min=1      max=1
+/* *********************************************************************************** */
+~ Using Kevin's script setup
+
+  olivias-imac:Ratings-and-Reviews olivia-home$ k6 run --vus 10 --duration 5s '/Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/script.js'
+            /\      |‾‾| /‾‾/   /‾‾/
+      /\  /  \     |  |/  /   /  /
+      /  \/    \    |     (   /   ‾‾\
+    /          \   |  |\  \ |  (‾)  |
+    / __________ \  |__| \__\ \_____/ .io
+
+    execution: local
+      script: /Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/script.js
+      output: -
+
+    scenarios: (100.00%) 1 scenario, 10 max VUs, 35s max duration (incl. graceful stop):
+            * default: 10 looping VUs for 5s (gracefulStop: 30s)
+
+
+  running (05.7s), 00/10 VUs, 35 complete and 0 interrupted iterations
+  default ✓ [======================================] 10 VUs  5s
+
+      data_received..................: 92 kB  16 kB/s
+      data_sent......................: 5.3 kB 936 B/s
+      http_req_blocked...............: avg=178.88µs min=1µs      med=3µs      max=665µs p(90)=641µs   p(95)=648.8µs
+      http_req_connecting............: avg=100.14µs min=0s       med=0s       max=382µs p(90)=363.4µs p(95)=369.9µs
+      http_req_duration..............: avg=1.54s    min=381ms    med=846.02ms max=3.97s p(90)=3.7s    p(95)=3.7s
+        { expected_response:true }...: avg=1.54s    min=381ms    med=846.02ms max=3.97s p(90)=3.7s    p(95)=3.7s
+      http_req_failed................: 0.00%  ✓ 0        ✗ 35
+      http_req_receiving.............: avg=45.51µs  min=19µs     med=49µs     max=78µs  p(90)=64.6µs  p(95)=66.19µs
+      http_req_sending...............: avg=33.62µs  min=5µs      med=16µs     max=140µs p(90)=91.6µs  p(95)=93.49µs
+      http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s    p(90)=0s      p(95)=0s
+      http_req_waiting...............: avg=1.54s    min=380.88ms med=845.95ms max=3.97s p(90)=3.7s    p(95)=3.7s
+      http_reqs......................: 35     6.160379/s
+      iteration_duration.............: avg=1.54s    min=381.83ms med=846.12ms max=3.98s p(90)=3.7s    p(95)=3.7s
+      iterations.....................: 35     6.160379/s
+      vus............................: 10     min=10     max=10
+      vus_max........................: 10     min=10     max=10
+/* *********************************************************************************** */
