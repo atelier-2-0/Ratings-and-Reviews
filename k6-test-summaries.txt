@@ -1,4 +1,5 @@
-~ Very first test case with example from k6
+~ GET /reviews
+Very first test case with example from k6
 
   olivias-imac:Ratings-and-Reviews olivia-home$ k6 run --vus 1 '/Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/script.js'
             /\      |‾‾| /‾‾/   /‾‾/
@@ -35,6 +36,7 @@
       vus............................: 1      min=1      max=1
       vus_max........................: 1      min=1      max=1
 /* *********************************************************************************** */
+~ GET /reviews
 ~ Using Kevin's script setup
 
   olivias-imac:Ratings-and-Reviews olivia-home$ k6 run --vus 10 --duration 5s '/Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/script.js'
@@ -72,3 +74,47 @@
       vus............................: 10     min=10     max=10
       vus_max........................: 10     min=10     max=10
 /* *********************************************************************************** */
+~ GET /reviews
+Add stages and explicit status code checks
+url tested: http://localhost:${port}/reviews?product_id=${randomProductId}&page=${randomPage}&count=${randomCount}
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: /Users/olivia-home/hackreactor/immersive/SDC/no-babel/Ratings-and-Reviews/server/tests/getReviews.test.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 1000 max VUs, 4m50s max duration (incl. graceful stop):
+           * default: Up to 1000 looping VUs for 4m20s over 5 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+running (4m20.0s), 0000/1000 VUs, 22631 complete and 0 interrupted iterations
+default ✓ [======================================] 0000/1000 VUs  4m20s
+
+     ✓ status is 200
+
+     checks.........................: 100.00% ✓ 22631     ✗ 0
+     data_received..................: 6.6 MB  26 kB/s
+     data_sent......................: 3.5 MB  13 kB/s
+     http_req_blocked...............: avg=16.91µs min=0s      med=2µs      max=679µs  p(90)=3µs   p(95)=11µs
+     http_req_connecting............: avg=11.85µs min=0s      med=0s       max=356µs  p(90)=0s    p(95)=0s
+     http_req_duration..............: avg=2.17s   min=72.9ms  med=675.75ms max=7.63s  p(90)=6.43s p(95)=7.17s
+       { expected_response:true }...: avg=2.17s   min=72.9ms  med=675.75ms max=7.63s  p(90)=6.43s p(95)=7.17s
+     http_req_failed................: 0.00%   ✓ 0         ✗ 22631
+     http_req_receiving.............: avg=37.09µs min=14µs    med=37µs     max=181µs  p(90)=52µs  p(95)=57µs
+     http_req_sending...............: avg=17.53µs min=4µs     med=16µs     max=9.76ms p(90)=21µs  p(95)=30µs
+     http_req_tls_handshaking.......: avg=0s      min=0s      med=0s       max=0s     p(90)=0s    p(95)=0s
+     http_req_waiting...............: avg=2.17s   min=72.86ms med=675.7ms  max=7.63s  p(90)=6.43s p(95)=7.17s
+     http_reqs......................: 22631   87.033806/s
+     iteration_duration.............: avg=2.17s   min=72.97ms med=675.88ms max=7.63s  p(90)=6.43s p(95)=7.17s
+     iterations.....................: 22631   87.033806/s
+     vus............................: 3       min=1       max=1000
+     vus_max........................: 1000    min=1000    max=1000
+/* *********************************************************************************** */
+~ GET /reviews
+Add stages and explicit status code checks
+url tested: http://localhost:${port}/reviews?product_id=${randomProductId}&page=${randomPage}&count=${randomCount}
