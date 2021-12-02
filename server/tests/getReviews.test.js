@@ -1,7 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable func-names */
-/* eslint-disable no-unused-expressions */
 import http from 'k6/http';
 import { check } from 'k6';
 import { Rate } from 'k6/metrics';
