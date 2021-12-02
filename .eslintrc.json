@@ -16,7 +16,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "ignorePatterns": ["dist"],
+    "ignorePatterns": ["k6-test-summaries.js", "tests"],
     "rules": {
       "no-console": "off",
       "camelcase": "off",

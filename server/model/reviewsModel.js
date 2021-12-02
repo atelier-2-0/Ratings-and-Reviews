@@ -1,9 +1,8 @@
 import pool from '../../database/db.js';
 
 export const listReviews = (reqQuery, callback) => {
-  // need to add query to add photos and allow for sorting
   const {
-    page = 1, count = 5, sort, product_id,
+    page = 1, count = 5, product_id,
   } = reqQuery;
 
   const retrieveAllReviews = 'SELECT review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness FROM reviews WHERE product_id = $1 LIMIT $2;';
@@ -27,8 +26,7 @@ export const listReviews = (reqQuery, callback) => {
 
 export const addReview = (data, callback) => {
   const {
-    product_id, rating, summary, body, recommend,
-    name, email, photos, characteristics,
+    product_id, rating, summary, body, recommend, name, email,
   } = data;
 
   const date = new Date();
@@ -47,7 +45,7 @@ export const addReview = (data, callback) => {
 export const updateHelpfulness = (reqQuery, callback) => {
   const { review_id } = reqQuery;
 
-  const markReviewAsHelpful = 'UPDATE reviews SET helpfulness = helpfulness + 1 WHERE id = $1';
+  const markReviewAsHelpful = 'UPDATE reviews SET helpfulness = helpfulness + 1 WHERE review_id = $1';
 
   pool.query(markReviewAsHelpful, [review_id], (error) => {
     if (error) {
@@ -61,7 +59,7 @@ export const updateHelpfulness = (reqQuery, callback) => {
 export const markAsReported = (reqQuery, callback) => {
   const { review_id } = reqQuery;
 
-  const reportReview = 'UPDATE reviews SET reported = true WHERE id = $1';
+  const reportReview = 'UPDATE reviews SET reported = true WHERE review_id = $1';
 
   pool.query(reportReview, [review_id], (error) => {
     if (error) {

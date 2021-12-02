@@ -1,6 +1,6 @@
 # General
 .DS_Code
-database/db.js
+.DS_Store
 
 # Logs
 logs
