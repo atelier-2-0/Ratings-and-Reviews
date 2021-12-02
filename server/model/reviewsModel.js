@@ -1,8 +1,6 @@
 import pool from '../../database/db.js';
 
 export const listReviews = (reqQuery, callback) => {
-  const startTime = Date.now();
-  console.log('beginning of query: ', startTime);
   const {
     page = 1, count = 5, product_id,
   } = reqQuery;
@@ -10,8 +8,6 @@ export const listReviews = (reqQuery, callback) => {
   const retrieveAllReviews = 'SELECT review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness FROM reviews WHERE product_id = $1 LIMIT $2;';
 
   pool.query(retrieveAllReviews, [product_id, count], (error, results) => {
-    const endTime = Date.now();
-    console.log('query complete: ', (endTime - startTime) / 1000);
     if (error) {
       callback(error, null);
     } else {
