@@ -21,7 +21,7 @@ CREATE TABLE reviews (
   helpfulness SMALLINT NOT NULL
 );
 
-CREATE INDEX product_id_idx ON reviews(product_id); --index whatever you're looking up, can play around with this
+CREATE INDEX product_id_idx ON reviews(product_id);
 
 COPY reviews FROM '/Users/olivia-home/hackreactor/immersive/SDC/csv/reviews.csv' WITH (FORMAT csv, HEADER TRUE);
 
